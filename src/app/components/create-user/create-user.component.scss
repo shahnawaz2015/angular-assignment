@@ -1,0 +1,11 @@
+#userForm {
+  background: rgba(0, 0, 0, 0.8);
+}
+.close-btn {
+  line-height: 12px;
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 700px;
+  }
+}
