@@ -1,2 +1,2 @@
-# angular-assignment
+# Angular-Assignment
 angular assignment training demo
