@@ -1,0 +1,167 @@
+<div class="modal show" id="userForm" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog" role="document">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ formText }} User</h5>
+          <button type="button" class="btn close-btn p-2" (click)="onReset()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <input type="hidden" id="ids" class="form-control" />
+            <div class="col col-sm-4 mb-3">
+              <input
+                type="text"
+                id="fName"
+                formControlName="fName"
+                placeholder="First Name"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': f['fName'].invalid && (f['fName'].dirty || f['fName'].touched) && f['fName'].errors,
+                  'is-valid': f['fName'].valid && (f['fName'].dirty || f['fName'].touched) && !f['fName'].errors
+                }"
+              />
+              <div
+                *ngIf="f['fName'].invalid && (f['fName'].dirty || f['fName'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['fName'].errors?.['required']">First Name is required</div>
+                <div *ngIf="f['fName'].errors?.['minlength']">Min. 3 letters required</div>
+              </div>
+            </div>
+            <div class="col col-sm-4 mb-3">
+              <input
+                type="text"
+                formControlName="mName"
+                placeholder="Middle Name"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': f['mName'].invalid && (f['mName'].dirty || f['mName'].touched) && f['mName'].errors,
+                  'is-valid': f['mName'].valid && (f['mName'].dirty || f['mName'].touched) && !f['mName'].errors
+                }"
+              />
+              <div
+                *ngIf="f['mName'].invalid && (f['mName'].dirty || f['mName'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['mName'].errors?.['required']">Middle Name is required</div>
+                <div *ngIf="f['mName'].errors?.['minlength']">Min. 3 letters required</div>
+              </div>
+            </div>
+            <div class="col col-sm-4 mb-3">
+              <input
+                type="text"
+                formControlName="lName"
+                placeholder="Last Name"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': f['lName'].invalid && (f['lName'].dirty || f['lName'].touched) && f['lName'].errors,
+                  'is-valid': f['lName'].valid && (f['lName'].dirty || f['lName'].touched) && !f['lName'].errors
+                }"
+              />
+              <div
+                *ngIf="f['lName'].invalid && (f['lName'].dirty || f['lName'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['lName'].errors?.['required']">Last Name is required</div>
+                <div *ngIf="f['lName'].errors?.['minlength']">Min. 3 letters required</div>
+              </div>
+            </div>
+            <div class="col col-sm-4 mb-3">
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="Email"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': f['email'].invalid && (f['email'].dirty || f['email'].touched) && f['email'].errors,
+                  'is-valid': f['email'].valid && (f['email'].dirty || f['email'].touched) && !f['email'].errors
+                }"
+              />
+              <div
+                *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+                <div *ngIf="f['email'].errors?.pattern">You have entered a valid email address!</div>
+              </div>
+            </div>
+            <div class="col col-sm-4 mb-3">
+              <input
+                type="tel"
+                formControlName="phone"
+                placeholder="Phone Number"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': f['phone'].invalid && (f['phone'].dirty || f['phone'].touched) && f['phone'].errors,
+                  'is-valid': f['phone'].valid && (f['phone'].dirty || f['phone'].touched) && !f['phone'].errors
+                }"
+              />
+              <div
+                *ngIf="f['phone'].invalid && (f['phone'].dirty || f['phone'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['phone'].errors?.['required']">Phone is required</div>
+                <div *ngIf="f['phone'].errors?.pattern">Please enter indian phone number</div>
+              </div>
+            </div>
+            <div class="col col-sm-4 mb-3">
+              <select
+                class="form-control"
+                formControlName="roles"
+                [ngClass]="{
+                  'is-invalid': f['roles'].invalid && (f['roles'].dirty || f['roles'].touched) && f['roles'].errors,
+                  'is-valid': f['roles'].valid && (f['roles'].dirty || f['roles'].touched) && !f['roles'].errors
+                }"
+              >
+                <option selected disabled [ngValue]="null">Select a Role</option>
+                <option
+                  *ngFor="let rol of roles"
+                  [ngValue]="rol">{{ rol }}
+                </option>
+              </select>
+              <div
+                *ngIf="f['roles'].invalid && (f['roles'].dirty || f['roles'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['roles'].errors?.['required']">Select a Role</div>
+              </div>
+            </div>
+            <div class="col col-sm-12 mb-3">
+              <textarea
+                formControlName="address"
+                rows="2"
+                placeholder="Address"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': f['address'].invalid && (f['address'].dirty || f['address'].touched) && f['address'].errors,
+                  'is-valid': f['address'].valid && (f['address'].dirty || f['address'].touched) && !f['address'].errors
+                }"
+              >
+              </textarea>
+              <div
+                *ngIf="f['address'].invalid && (f['address'].dirty || f['address'].touched)"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['address'].errors?.['required']">Enter your address</div>
+                <div *ngIf="f['address'].errors?.['minlength']">Min. 5 letters required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col col-sm-12">
+              <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">{{ buttonText }}</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="onReset()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

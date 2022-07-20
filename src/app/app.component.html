@@ -1,0 +1,6 @@
+<div class="container py-3">
+  <app-load-data (cLoader)="loaderClose($event)" *ngIf="loadData"></app-load-data>
+  <app-create-user [selectedUser]="selectedUser" (closeComponent)="abcd($event)" *ngIf="!loadData && isCreateUser"></app-create-user>
+  <app-user-list (userSelected)="editUser($event)" (newUser)="createUser($event)" *ngIf="!loadData"></app-user-list>
+</div>
+<!-- dvfas fasdf -->
